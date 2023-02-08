@@ -1,6 +1,6 @@
 connection: "snowflake"
 
-include: "*.view"
+include: "/views/*.view.lkml"
 explore: account {hidden:yes}
 explore: cancel_c {hidden:yes}
 explore: case {hidden:yes}
