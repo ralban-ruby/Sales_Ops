@@ -1,22 +1,76 @@
 connection: "snowflake"
 
 include: "/views/*.view.lkml"
-explore: account {hidden:yes}
-explore: cancel_c {hidden:yes}
-explore: case {hidden:yes}
-explore: contact {hidden:yes}
-explore: opportunity {hidden:yes}
-explore: pricebook_2 {hidden:yes}
-explore: product_2 {hidden:yes}
-explore: project_c {hidden:yes}
-explore: task {hidden:yes}
-explore: user {hidden:yes}
-explore: lead {hidden:yes}
-explore: lead_history {hidden:yes}
-datagroup: sales_ops_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+
+
+explore: account { ##Salesforce Account
+  label: "Lead View"
+  join: lead {  ##Salesforce lead
+    relationship: one_to_many
+     type: left_outer
+    sql_on: ${account.id} = ${lead.converted_account_id} ;;
+  }
+  join: opportunity {
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${account.id} = ${opportunity.account_id}  ;;
+    }
+   join: customer_fact_order_activities_combined {
+    view_label: "Customer Fact Order Activities"
+    relationship: one_to_many
+    type: left_outer
+    sql_on:${account.id} = ${customer_fact_order_activities_combined.crm_id}  ;;
+
+
+   }
+  }
+
+
+explore: onboarding {
+  label: "Onboarding View"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##OLD STUFF BELOW###
+
+# explore: account {hidden:yes}
+# explore: cancel_c {hidden:yes}
+# explore: case {hidden:yes}
+# explore: contact {hidden:yes}
+# explore: opportunity {hidden:yes}
+# explore: pricebook_2 {hidden:yes}
+# explore: product_2 {hidden:yes}
+# explore: project_c {hidden:yes}
+# explore: task {hidden:yes}
+# explore: user {hidden:yes}
+# explore: lead {hidden:yes}
+# explore: lead_history {hidden:yes}
+# datagroup: sales_ops_default_datagroup {
+#   # sql_trigger: SELECT MAX(id) FROM etl_log;;
+#   max_cache_age: "1 hour"
+# }
 
 
 # #explore: account_lead {
@@ -49,4 +103,4 @@ datagroup: sales_ops_default_datagroup {
 
 
 
-persist_with: sales_ops_default_datagroup
+#persist_with: sales_ops_default_datagroup

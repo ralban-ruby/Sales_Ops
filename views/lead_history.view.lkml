@@ -1,92 +1,76 @@
 view: lead_history {
-  sql_table_name: "SALESFORCE"."LEAD_HISTORY"
-    ;;
-  drill_fields: [id]
+    derived_table: {
+      sql: SELECT * FROM FIVETRAN_DB.SALESFORCE.LEAD_HISTORY WHERE IS_DELETED <> 1
+        ;;
+    }
 
-  dimension: id {
-    primary_key: yes
-    type: string
-    sql: ${TABLE}."ID" ;;
-  }
+    measure: count {
+      type: count
+      drill_fields: [detail*]
+    }
 
-  dimension_group: _fivetran_synced {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: CAST(${TABLE}."_FIVETRAN_SYNCED" AS TIMESTAMP_NTZ) ;;
-  }
+    dimension: id {
+      type: string
+      sql: ${TABLE}."ID" ;;
+    }
 
-  dimension: created_by_id {
-    type: string
-    sql: ${TABLE}."CREATED_BY_ID" ;;
-  }
+    dimension: is_deleted {
+      type: yesno
+      sql: ${TABLE}."IS_DELETED" ;;
+    }
 
-  dimension_group: created {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: CAST(${TABLE}."CREATED_DATE" AS TIMESTAMP_NTZ) ;;
-  }
+    dimension: lead_id {
+      type: string
+      sql: ${TABLE}."LEAD_ID" ;;
+    }
 
-  dimension: data_type {
-    type: string
-    sql: ${TABLE}."DATA_TYPE" ;;
-  }
+    dimension: created_by_id {
+      type: string
+      sql: ${TABLE}."CREATED_BY_ID" ;;
+    }
 
-  dimension: field {
-    type: string
-    sql: ${TABLE}."FIELD" ;;
-  }
+    dimension_group: created_date {
+      type: time
+      sql: ${TABLE}."CREATED_DATE" ;;
+    }
 
-  dimension: is_deleted {
-    type: yesno
-    sql: ${TABLE}."IS_DELETED" ;;
-  }
+    dimension: field {
+      type: string
+      sql: ${TABLE}."FIELD" ;;
+    }
 
-  dimension: lead_id {
-    type: string
-    # hidden: yes
-    sql: ${TABLE}."LEAD_ID" ;;
-  }
+    dimension: old_value {
+      type: string
+      sql: ${TABLE}."OLD_VALUE" ;;
+    }
 
-  dimension: new_value {
-    type: string
-    sql: ${TABLE}."NEW_VALUE" ;;
-  }
+    dimension: new_value {
+      type: string
+      sql: ${TABLE}."NEW_VALUE" ;;
+    }
 
-  dimension: old_value {
-    type: string
-    sql: ${TABLE}."OLD_VALUE" ;;
-  }
+    dimension_group: _fivetran_synced {
+      type: time
+      sql: ${TABLE}."_FIVETRAN_SYNCED" ;;
+    }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
+    dimension: data_type {
+      type: string
+      sql: ${TABLE}."DATA_TYPE" ;;
+    }
 
-  # ----- Sets of fields for drilling ------
-  set: detail {
-    fields: [
-      id,
-      lead.name,
-      lead.id,
-      lead.last_name,
-      lead.first_name,
-      lead.middle_name
-    ]
+    set: detail {
+      fields: [
+        id,
+        is_deleted,
+        lead_id,
+        created_by_id,
+        created_date_time,
+        field,
+        old_value,
+        new_value,
+        _fivetran_synced_time,
+        data_type
+      ]
+    }
   }
-}
