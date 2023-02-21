@@ -18,7 +18,6 @@ view: onboarding {
     dimension: OwnerId {
       label: "Owner"
       type: string
-      hidden: yes
       sql: ${TABLE}."OWNER_ID" ;;
     }
 
