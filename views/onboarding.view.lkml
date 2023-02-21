@@ -16,9 +16,68 @@ view: onboarding {
     }
 
     dimension: OwnerId {
-      label: "Owner"
+      label: "Owner Id"
       type: string
       sql: ${TABLE}."OWNER_ID" ;;
+    }
+
+    dimension: Onboarder_Name {
+      label: "Owner Name"
+      case: {
+        when: {
+          sql: ${OwnerId} = '0054v00000FBryuAAD' ;;
+          label: "Becca Johnson"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000005P0MsQAK' ;;
+          label: "Chelsea Neely"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000005NWtpQAG' ;;
+          label: "Crystal Ann Munoz"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000009kbWhQAI' ;;
+          label: "Frankie Lee"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000008OsDKQA0' ;;
+          label: "Lauren Harrelson"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000008SRRxQAO' ;;
+          label: "Lin Kottwitz"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000005PinTQAS' ;;
+          label: "Miki Hunt"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000005PsAgQAK' ;;
+          label: "Monica Maberry"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000008SRS2QAO' ;;
+          label: "Nicholas Fox"
+        }
+        when: {
+          sql: ${OwnerId} = '0051C000008Sd9HQAS' ;;
+          label: "Nicole Shemezis"
+        }
+        when: {
+          sql: ${OwnerId} = '00515000004w9FyAAI' ;;
+          label: "Rachel Wyss"
+        }
+        when: {
+          sql: ${OwnerId} = '0054v00000E1btVAAR' ;;
+          label: "Rosalie Fordham"
+        }
+        when: {
+          sql: ${OwnerId} = '0054v00000FBZrlAAH' ;;
+          label: "Stephanie Gallegos"
+        }
+        else: "Unknown"
+      }
     }
 
     dimension: is_deleted {
