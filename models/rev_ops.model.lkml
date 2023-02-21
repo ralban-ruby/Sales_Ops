@@ -15,14 +15,7 @@ explore: account { ##Salesforce Account
     type: left_outer
     sql_on: ${account.id} = ${opportunity.account_id}  ;;
     }
-   join: customer_fact_order_activities_combined {
-    view_label: "Customer Fact Order Activities"
-    relationship: one_to_many
-    type: left_outer
-    sql_on:${account.id} = ${customer_fact_order_activities_combined.crm_id}  ;;
 
-
-   }
   }
 
 
@@ -31,7 +24,7 @@ explore: onboarding {
 }
 
 
-
+explore: customer_fact_order_activities_combined {}
 
 
 
