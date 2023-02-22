@@ -21,6 +21,12 @@ view: onboarding {
       sql: ${TABLE}."OWNER_ID" ;;
     }
 
+  dimension: name {
+    label: "Name"
+    type: string
+    sql: ${TABLE}."NAME" ;;
+  }
+
     dimension: Onboarder_Name {
       label: "Owner Name"
       case: {
