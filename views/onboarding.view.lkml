@@ -76,6 +76,14 @@ view: onboarding {
           sql: ${OwnerId} = '0054v00000FBZrlAAH' ;;
           label: "Stephanie Gallegos"
         }
+        when: {
+          sql: ${OwnerId} = '005150000074KbCAAU' ;;
+          label: "Madi Kirst"
+        }
+        when: {
+          sql: ${OwnerId} = '00G1C000005JXhUUAW' ;;
+          label: "Onboarding Queue"
+        }
         else: "Unknown"
       }
     }
