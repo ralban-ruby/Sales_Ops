@@ -26,9 +26,9 @@ explore: account { ##Salesforce Account
 explore: onboarding { ##Salesforce Onboarding
   label: "Onboarding View"
   join: user { ##Salesforce User
-    relationship: one_to_many
+    relationship: many_to_one
       type: left_outer
-    sql_on: ${onboarding.OwnerId} = ${user.user_role_id} ;;
+    sql_on: ${onboarding.OwnerId} = ${user.id} ;;
     }
 
   }
