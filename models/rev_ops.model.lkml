@@ -19,19 +19,19 @@ explore: account { ##Salesforce Account
   }
 
 
-explore: onboarding {
-  label: "Onboarding View"
-}
-
-# explore: onboarding { ##Salesforce Onboarding
+# explore: onboarding {
 #   label: "Onboarding View"
-#   join: user { ##Salesforce User
-#     relationship: one_to_one
-#       type: left_outer
-#     sql_on: ${onboarding.OwnerId} = ${user.user_role_id} ;;
-#     }
+# }
 
-#   }
+explore: onboarding { ##Salesforce Onboarding
+  label: "Onboarding View"
+  join: user { ##Salesforce User
+    relationship: many_to_one
+      type: left_outer
+    sql_on: ${onboarding.OwnerId} = ${user.user_role_id} ;;
+    }
+
+  }
 
 
 explore: customer_fact_order_activities_combined {}

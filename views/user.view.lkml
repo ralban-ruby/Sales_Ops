@@ -35,6 +35,7 @@ view: user {
     }
 
     dimension: name {
+      label: "Name"
       type: string
       sql: ${TABLE}."NAME" ;;
     }
