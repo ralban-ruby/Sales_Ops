@@ -30,6 +30,11 @@ explore: onboarding { ##Salesforce Onboarding
       type: left_outer
     sql_on: ${onboarding.OwnerId} = ${user.id} ;;
     }
+  join: customer_data_c { ##Salesforce Customer Data
+    relationship: many_to_one
+      type: left_outer
+    sql_on: ${onboarding.Account__c} = ${customer_data_c.account_c};;
+    }
 
   }
 
