@@ -24,7 +24,7 @@ view: customer_fact_order_activities_combined {
       hour
     ]
     datatype: datetime
-    sql: DATETIME_ADD(DATE,${contract_effective_date},INTERVAL 5 DAY) ;;
+    sql: DATETIME_ADD(DATE,${contract_effective_date},INTERVAL 7 DAY) ;;
   }
 
   measure: week_1_usage {
