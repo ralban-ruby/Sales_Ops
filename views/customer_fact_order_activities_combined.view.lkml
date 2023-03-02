@@ -18,7 +18,7 @@ view: customer_fact_order_activities_combined {
   measure: week_1_usage {
     label: "Week 1 Usage"
     type: number
-    sql: CASE WHEN ${date_date} >= ${contract_effective_date} AND <= Week ${week_1_usage_date} THEN ${Sum_Total_RS_Minutes} END ;;
+    sql: CASE WHEN ${date_date} BETWEEN ${contract_effective_date} AND ${week_1_usage_date} THEN ${Sum_Total_RS_Minutes} END ;;
   }
 
   dimension: ukey {
