@@ -9,6 +9,18 @@ view: customer_fact_order_activities_combined {
     drill_fields: [detail*]
   }
 
+  measure: week_1_usage_date {
+    label: "Week 1 Usage Date"
+    type: date
+    sql: add_days(7,${contract_effective_date}) ;;
+  }
+
+  measure: week_1_usage {
+    label: "Week 1 Usage"
+    type: number
+    sql: CASE WHEN ${date_date} >= ${contract_effective_date} AND <= Week ${week_1_usage_date} THEN ${Sum_Total_RS_Minutes} END ;;
+  }
+
   dimension: ukey {
     primary_key: yes
     type: string
@@ -380,6 +392,8 @@ view: customer_fact_order_activities_combined {
 
   set: detail {
     fields: [
+      week_1_usage_date,
+      week_1_usage,
       ukey,
       date_time,
       crm_id,
