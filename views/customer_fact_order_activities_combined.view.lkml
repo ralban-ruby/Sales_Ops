@@ -27,6 +27,16 @@ view: customer_fact_order_activities_combined {
     sql: DATEADD(DAY,7,${contract_effective_date}) ;;
   }
 
+  measure: week_1_minutes_used {
+    type: sum
+    sql: ${date_date} >= ${contract_effective_date} AND ${date_date} <= ${week_1_usage_date_date};;
+  }
+
+  measure: customer_usage {
+    type: number
+    sql: ${week_1_minutes_used} / ${included_units} ;;
+  }
+
   dimension: ukey {
     primary_key: yes
     type: string
