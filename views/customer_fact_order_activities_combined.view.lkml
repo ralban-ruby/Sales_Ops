@@ -29,7 +29,7 @@ view: customer_fact_order_activities_combined {
 
   measure: week_1_minutes_used {
     type: number
-    sql: CASE WHEN ${date_date}>=${contract_effective_date} AND ${date_date}<=${week_1_usage_date_date} THEN SUM(${Total_RS_Mins}) ELSE 0 END;;
+    sql: IF ${date_date}>=${contract_effective_date} AND ${date_date}<=${week_1_usage_date_date}, SUM(${Total_RS_Mins});;
   }
 
   measure: customer_usage {
