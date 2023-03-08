@@ -24,7 +24,7 @@ view: customer_fact_order_activities_combined {
       hour
     ]
     datatype: datetime
-    sql: EOMONTH(${contract_effective_date},2);;
+    sql: last_day(DATEADD(MONTH,3,${contract_effective_date}));;
   }
 
   dimension_group: week_1_usage_date {
