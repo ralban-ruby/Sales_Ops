@@ -9,6 +9,24 @@ view: customer_fact_order_activities_combined {
     drill_fields: [detail*]
   }
 
+  dimension_group: 3_mos_retention_date {
+    label: "3 Mos Retention Date"
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      time,
+      time_of_day,
+      hour
+    ]
+    datatype: datetime
+    sql: last_day(DATEADD(MONTH,2,${contract_effective_date})) ;;
+  }
+
   dimension_group: week_1_usage_date {
     label: "Week 1 Usage Date"
     type: time
