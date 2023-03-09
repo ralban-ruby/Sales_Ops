@@ -65,7 +65,7 @@ view: onboarding {
       hour
     ]
     datatype: datetime
-    sql: DATEADD(HOUR,-8,${created_date_date}) ;;
+    sql: DATEADD(HOUR,-8,${created_date_time}) ;;
   }
 
     dimension: RecordTypeId {
