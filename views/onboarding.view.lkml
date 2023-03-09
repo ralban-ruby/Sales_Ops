@@ -50,6 +50,24 @@ view: onboarding {
       sql: DATEADD(DAY,7,${Active_Status__c_date}) ;;
     }
 
+  dimension_group: create_date_adjusted {
+    label: "Adjusted Created Date"
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      time,
+      time_of_day,
+      hour
+    ]
+    datatype: datetime
+    sql: DATETIME_ADD(HOUR,-8,${Active_Status__c_date}) ;;
+  }
+
     dimension: RecordTypeId {
       label: "Record Type"
       type: string
