@@ -27,9 +27,14 @@ explore: onboarding { ##Salesforce Onboarding
   label: "Onboarding View"
   join: user { ##Salesforce User
     relationship: many_to_one
-      type: left_outer
+    type: left_outer
     sql_on: ${onboarding.OwnerId} = ${user.id} ;;
     }
+  join: onboarding_history { ##Salesforce Onboarding_History
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${onboarding.id} = ${onboarding_history.id} ;;
+  }
   join: customer_fact_order_activities_combined {
     relationship: one_to_many
     type: left_outer
