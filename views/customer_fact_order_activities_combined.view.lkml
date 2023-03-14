@@ -27,33 +27,15 @@ view: customer_fact_order_activities_combined {
     sql: last_day(DATEADD(MONTH,3,${contract_effective_date}));;
   }
 
-  dimension_group: week_1_usage_date {
-    label: "Week 1 Usage Date"
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      time,
-      time_of_day,
-      hour
-    ]
-    datatype: datetime
-    sql: DATEADD(DAY,7,${contract_effective_date}) ;;
-  }
+  # measure: week_1_minutes_used {
+  #   type: number
+  #   sql: IF ${date_date}>=${contract_effective_date} AND ${date_date}<=${week_1_usage_date_date}, SUM(${Total_RS_Mins});;
+  # }
 
-  measure: week_1_minutes_used {
-    type: number
-    sql: IF ${date_date}>=${contract_effective_date} AND ${date_date}<=${week_1_usage_date_date}, SUM(${Total_RS_Mins});;
-  }
-
-  measure: customer_usage {
-    type: number
-    sql: ${week_1_minutes_used} / ${included_units} ;;
-  }
+  # measure: customer_usage {
+  #   type: number
+  #   sql: ${week_1_minutes_used} / ${included_units} ;;
+  # }
 
   dimension: ukey {
     primary_key: yes

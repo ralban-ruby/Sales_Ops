@@ -32,8 +32,8 @@ view: onboarding {
       sql: ${TABLE}."NAME" ;;
     }
 
-    dimension_group: ob_week_1_usage_date {
-      label: "OB Week 1 Usage Date"
+    dimension_group: week_1_usage_date {
+      label: "Week 1 Usage Date"
       type: time
       timeframes: [
         raw,
