@@ -33,7 +33,7 @@ explore: onboarding { ##Salesforce Onboarding
   join: onboarding_history { ##Salesforce Onboarding_History
     relationship: one_to_many
     type: left_outer
-    sql_on: ${onboarding.id} = ${onboarding_history.id} ;;
+    sql_on: ${onboarding.id} = ${onboarding_history.parent_id} ;;
   }
   join: customer_fact_order_activities_combined {
     relationship: one_to_many
