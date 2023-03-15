@@ -47,7 +47,7 @@ view: onboarding {
         hour
       ]
       datatype: datetime
-      sql: DATEADD(DAY,7,${Active_Status__c_date}) ;;
+      sql: DATEADD(DAY,8,${Active_Status__c_date}) ;;
     }
 
     dimension_group: create_date_adjusted {
