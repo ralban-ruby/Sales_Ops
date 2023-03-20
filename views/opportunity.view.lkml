@@ -19,6 +19,18 @@ view: opportunity {
       sql: ${TABLE}."IS_DELETED" ;;
     }
 
+    dimension: same_day_close {
+      label: "Same Day Close"
+      type: number
+      sql: IF ${lead_create_date}=${close_date_time_c_date} AND stage = 'Closed Won',1,0 ;;
+    }
+
+    dimension: lead_create_date {
+      label: "Lead Create Date"
+      type: date
+      sql: ${lead.created_date_date} ;;
+    }
+
     dimension: account_id {
       type: string
       sql: ${TABLE}."ACCOUNT_ID" ;;
