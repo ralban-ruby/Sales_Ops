@@ -22,7 +22,7 @@ view: opportunity {
     dimension: same_day_close {
       label: "Same Day Close"
       type: number
-      sql: IF ${lead_create_date}=${close_date_time_c_date} AND ${stage_name} = 'Closed Won',1,0 ;;
+      sql: CASE WHEN ${lead_create_date}=${close_date_time_c_date} AND ${stage_name} = 'Closed Won' THEN 1 ELSE 0 ;;
     }
 
     dimension: lead_create_date {
