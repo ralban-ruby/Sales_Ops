@@ -34,7 +34,7 @@ view: opportunity {
     dimension: lead_create_date {
       label: "Lead Create Date"
       type: date
-      sql: ${lead.created_date_date} ;;
+      sql: DATEADD(DAY,1,${lead.created_date_date}) ;;
     }
 
     dimension: account_id {
