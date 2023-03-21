@@ -24,16 +24,40 @@ view: opportunity {
       type: number
       case: {
         when: {
-          sql: ${lead_create_date}=${close_date_time_c_date} AND ${stage_name} = 'Closed Won' ;;
+          sql: ${lead_create_date_date}=${close_date_time_c_date} AND ${stage_name} = 'Closed Won' ;;
           label: "1"
         }
         else: "0"
       }
     }
 
-    dimension: lead_create_date {
+  dimension: in_month_closed_won {
+    label: "In-Month Closed Won"
+    type: number
+    case: {
+      when: {
+        sql: ${lead_create_date_month} = ${close_date_time_c_month} AND ${stage_name} = 'Closed Won' ;;
+        label: "1"
+      }
+      else: "0"
+    }
+  }
+
+    dimension_group: lead_create_date {
       label: "Lead Create Date"
-      type: date
+      type: time
+      timeframes: [
+        raw,
+        date,
+        week,
+        month,
+        quarter,
+        year,
+        time,
+        time_of_day,
+        hour
+      ]
+      datatype: datetime
       sql: DATEADD(DAY,1,${lead.created_date_date}) ;;
     }
 
