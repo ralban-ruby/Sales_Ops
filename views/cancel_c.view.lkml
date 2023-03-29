@@ -84,8 +84,21 @@ view: cancel_c {
       sql: ${TABLE}."CANCELLATION_CHANNEL_C" ;;
     }
 
-    dimension: cancellation_effective_date_c {
-      type: date
+    dimension_group: Cancellation_Effective_Date_c {
+      label: "Cancellation Effective Date"
+      type: time
+      timeframes: [
+        raw,
+        date,
+        week,
+        month,
+        quarter,
+        year,
+        time,
+        time_of_day,
+        hour
+      ]
+      datatype: datetime
       sql: ${TABLE}."CANCELLATION_EFFECTIVE_DATE_C" ;;
     }
 
@@ -351,7 +364,6 @@ view: cancel_c {
         last_referenced_date_time,
         account_c,
         cancellation_channel_c,
-        cancellation_effective_date_c,
         contact_c,
         credit_applied_c,
         customer_saved_c,
