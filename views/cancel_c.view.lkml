@@ -102,6 +102,24 @@ view: cancel_c {
       sql: ${TABLE}."CANCELLATION_EFFECTIVE_DATE_C" ;;
     }
 
+  dimension_group: cancellation_submitted_date_c {
+    label: "Cancellation Submitted Date"
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      time,
+      time_of_day,
+      hour
+    ]
+    datatype: datetime
+    sql: ${TABLE}."CANCELLATION_SUBMITTED_DATE_C" ;;
+  }
+
     dimension: contact_c {
       type: string
       sql: ${TABLE}."CONTACT_C" ;;
