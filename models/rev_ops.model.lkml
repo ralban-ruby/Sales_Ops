@@ -46,6 +46,15 @@ explore: onboarding { ##Salesforce Onboarding
 
 explore: customer_fact_order_activities_combined {}
 
+explore: cancel_c { ##Salesforce Account
+  label: "Cancels View"
+  join: account { ##Salesforce Cancel
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${cancel_c.account_c} = ${account.id} ;;
+  }
+}
+
 
 
 
