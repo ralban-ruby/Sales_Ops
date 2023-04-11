@@ -37,6 +37,12 @@ view: customer_fact_order_activities_combined {
   #   sql: ${week_1_minutes_used} / ${included_units} ;;
   # }
 
+  dimension: original_start_date {
+    label: "Original Start Date"
+    type: date
+    sql: min(${effective_start_date}) ;;
+  }
+
   dimension: ukey {
     primary_key: yes
     type: string

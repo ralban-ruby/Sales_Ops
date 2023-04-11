@@ -80,6 +80,7 @@ view: asknicely_nps_c {
   }
 
   dimension: asknicely_score_c {
+    label: "Ask Nicely Score"
     type: number
     sql: ${TABLE}."ASKNICELY_SCORE_C" ;;
   }
@@ -90,6 +91,7 @@ view: asknicely_nps_c {
   }
 
   dimension_group: asknicely_surveyresponded_c {
+    label: "Responded Date"
     type: time
     timeframes: [
       raw,
@@ -104,6 +106,7 @@ view: asknicely_nps_c {
   }
 
   dimension_group: asknicely_surveysent_c {
+    label: "Sent Date"
     type: time
     timeframes: [
       raw,
@@ -123,6 +126,7 @@ view: asknicely_nps_c {
   }
 
   dimension: asknicely_user_c {
+    label: "Ask Nicely User"
     type: string
     sql: ${TABLE}."ASKNICELY_USER_C" ;;
   }
@@ -133,6 +137,7 @@ view: asknicely_nps_c {
   }
 
   dimension_group: created {
+    label: "Created Date"
     type: time
     timeframes: [
       raw,
@@ -147,6 +152,7 @@ view: asknicely_nps_c {
   }
 
   dimension: customer_success_manager_c {
+    label: "Customer Success Manager Name"
     type: string
     sql: ${TABLE}."CUSTOMER_SUCCESS_MANAGER_C" ;;
   }
@@ -157,6 +163,7 @@ view: asknicely_nps_c {
   }
 
   dimension_group: last_activity {
+    label: "Last Activity Date"
     type: time
     timeframes: [
       raw,
@@ -196,6 +203,7 @@ view: asknicely_nps_c {
   }
 
   dimension: onboarder_c {
+    label: "Onboarder Name"
     type: string
     sql: ${TABLE}."ONBOARDER_C" ;;
   }
