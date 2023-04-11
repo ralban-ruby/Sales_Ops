@@ -37,10 +37,16 @@ view: customer_fact_order_activities_combined {
   #   sql: ${week_1_minutes_used} / ${included_units} ;;
   # }
 
-  dimension: original_start_date {
+  measure: original_start_date {
     label: "Original Start Date"
     type: date
     sql: min(${effective_start_date}) ;;
+  }
+
+  measure: most_recent_cancel{
+    label: "Most Recent Cancel Date"
+    type: date
+    sql: max(${effective_end_date}) ;;
   }
 
   dimension: ukey {
