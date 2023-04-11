@@ -55,6 +55,15 @@ explore: cancel_c { ##Salesforce Account
   }
 }
 
+explore: asknicely_nps_c { ##Salesforce Ask Nicely
+  label: "Ask Nicely NPS View"
+  join: user { ##Salesforce User
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${asknicely_nps_c.onboarder_c} = ${user.name} ;;
+  }
+}
+
 
 
 
