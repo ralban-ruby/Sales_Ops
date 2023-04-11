@@ -51,7 +51,6 @@ view: customer_fact_order_activities_combined {
     sql: max(${effective_end_date}) ;;
   }
 
-
   dimension: ukey {
     primary_key: yes
     type: string

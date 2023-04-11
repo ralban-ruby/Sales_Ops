@@ -102,7 +102,7 @@ view: asknicely_nps_c {
       quarter,
       year
     ]
-    sql: ${TABLE}.CAST(${TABLE}."ASKNICELY_SURVEYRESPONDED_C" AS TIMESTAMP_NTZ) ;;
+    sql: ${TABLE}."ASKNICELY_SURVEYRESPONDED_C" ;;
   }
 
   dimension_group: asknicely_surveysent_c {
@@ -117,7 +117,7 @@ view: asknicely_nps_c {
       quarter,
       year
     ]
-    sql: ${TABLE}.CAST(${TABLE}."ASKNICELY_SURVEYSENT_C" AS TIMESTAMP_NTZ) ;;
+    sql: (${TABLE}."ASKNICELY_SURVEYSENT_C" ;;
   }
 
   dimension: asknicely_tag_c {
