@@ -28,6 +28,11 @@ view: lead {
     sql: CASE WHEN ${CoR_Date__c_date} != NULL THEN ${CoR_Date__c_date} ELSE ${created_date_date} END ;;
   }
 
+  measure: original_cohort_date_measure{
+    type: min
+    sql: ${adjusted_cor_date_date} ;;
+  }
+
     dimension: id {
       type: string
       sql: ${TABLE}."ID" ;;

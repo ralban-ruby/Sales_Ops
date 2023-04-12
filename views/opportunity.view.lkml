@@ -19,6 +19,25 @@ view: opportunity {
       sql: ${TABLE}."IS_DELETED" ;;
     }
 
+  dimension_group: adjusted_close_date {
+    label: "Adjusted Close Date"
+    type: time
+    convert_tz: no
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      time,
+      time_of_day,
+      hour
+    ]
+    datatype: datetime
+    sql: CASE WHEN ${close_date_time_c_date} != NULL THEN ${close_date_time_c_date} ELSE ${close_date} END ;;
+  }
+
     dimension: same_day_close {
       label: "Same Day Close"
       type: number
