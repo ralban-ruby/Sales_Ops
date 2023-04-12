@@ -12,6 +12,7 @@ view: lead {
   dimension_group: adjusted_cor_date {
     label: "Adjusted CoR Date"
     type: time
+    convert_tz: no
     timeframes: [
       raw,
       date,
