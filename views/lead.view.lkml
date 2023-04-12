@@ -24,7 +24,7 @@ view: lead {
       hour
     ]
     datatype: datetime
-    sql: CASE WHEN ${CoR_Date__c_date} = NULL THEN ${created_date_date} ELSE ${CoR_Date__c_date} END ;;
+    sql: CASE WHEN ${CoR_Date__c_date} != NULL THEN ${CoR_Date__c_date} ELSE ${created_date_date} END ;;
   }
 
     dimension: id {
