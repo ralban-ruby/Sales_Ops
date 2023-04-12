@@ -3,7 +3,7 @@ view: lead_derived {
     sql:
       SELECT
         id,
-        MIN(DATE(adjusted_cor_date)) AS original_cohort_date
+        MIN(DATE(adjusted_cor_date_date)) AS original_cohort_date
       FROM
         lead ;;
   }
