@@ -3,12 +3,15 @@ view: lead_derived {
     sql:
       SELECT
         id,
-        MIN(DATE(CASE WHEN CoR_Date__c != NULL THEN CoR_Date__C ELSE created_date END )) AS original_cohort_date
+        MIN(DATE(adjusted_cor_date)) AS original_cohort_date
       FROM
-        lead ;;
+        lead
+      GROUP BY
+        id;;
   }
   dimension: id {
     type: string
+    primary_key: yes
     sql: ${TABLE}."ID" ;;
   }
   dimension_group: original_cohort_date{
