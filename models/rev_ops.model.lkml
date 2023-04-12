@@ -18,7 +18,7 @@ explore: opportunity { ##Salesforce opportunity
   join: lead_derived {
     relationship: one_to_one
     type: left_outer
-    sql_on: ${lead.id} = ${lead_derived.id} ;;
+    sql_on: ${account.id} = ${lead_derived.account_id} ;;
   }
   }
 
