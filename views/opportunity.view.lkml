@@ -35,7 +35,7 @@ view: opportunity {
       hour
     ]
     datatype: datetime
-    sql: CASE WHEN ${close_date_time_c_date} != NULL THEN ${close_date_time_c_date} ELSE ${close_date} END ;;
+    sql: CASE WHEN ${close_date_time_c_date} = NULL THEN ${close_date} ELSE ${close_date_time_c_date} END ;;
   }
 
     dimension: same_day_close {
