@@ -3,17 +3,17 @@ connection: "snowflake"
 include: "/views/*.view.lkml"
 
 
-explore: account { ##Salesforce Account
-  label: "Lead View"
-  join: lead {  ##Salesforce lead
-    relationship: one_to_many
+explore: opportunity { ##Salesforce opportunity
+  label: "Opportunity View"
+  join: account {  ##Salesforce account
+    relationship: many_to_one
      type: left_outer
-    sql_on: ${account.id} = ${lead.converted_account_id} ;;
+    sql_on: ${opportunity.account_id} = ${account.id} ;;
   }
-  join: opportunity {
-    relationship: one_to_many
+  join: lead { ##Salesforce lead
+    relationship: many_to_one
     type: left_outer
-    sql_on: ${account.id} = ${opportunity.account_id}  ;;
+    sql_on: ${account.id} = ${lead.converted_account_id} ;;
     }
 
   }
