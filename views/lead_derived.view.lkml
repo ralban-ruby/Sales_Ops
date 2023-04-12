@@ -5,7 +5,9 @@ view: lead_derived {
         id,
         MIN(DATE(CASE WHEN CO_R_DATE_C != NULL THEN CO_R_DATE_C ELSE CREATED_DATE END)) AS original_cohort_date
       FROM
-        lead ;;
+        lead
+      GROUP BY
+        id;;
   }
   dimension: id {
     type: string
