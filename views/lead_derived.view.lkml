@@ -16,6 +16,6 @@ view: lead_derived {
     convert_tz: no
     type: time
     timeframes: [date, week, month, year]
-    sql: ${TABLE}.first_order ;;
+    sql: ${TABLE}.original_cohort_date ;;
   }
 }
