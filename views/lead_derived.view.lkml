@@ -24,13 +24,26 @@ view: lead_derived{
     sql: ${TABLE}."Account ID" ;;
   }
 
-  dimension: original_cohort_date {
-    type: date
+  dimension_group: original_cohort_date {
+    type: time
     label: "Original Cohort Date"
+    convert_tz: no
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      time,
+      time_of_day,
+      hour
+    ]
+    datatype: datetime
     sql: ${TABLE}."Original Cohort Date" ;;
   }
 
   set: detail {
-    fields: [account_id, original_cohort_date]
+    fields: [account_id]
   }
 }
