@@ -9,29 +9,42 @@ view: lead {
       drill_fields: [detail*]
     }
 
-  dimension_group: adjusted_cor_date {
-    label: "Adjusted CoR Date"
-    type: time
-    convert_tz: no
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      time,
-      time_of_day,
-      hour
-    ]
-    datatype: datetime
-    sql: CASE WHEN ${CoR_Date__c_date} != NULL THEN ${CoR_Date__c_date} ELSE ${created_date_date} END ;;
-  }
+    dimension: lead_cohort {
+      label: "Original Lead Cohort"
+      convert_tz: no
+      type: string
+      sql: CASE
+            WHEN ${lead_derived.original_cohort_date_month} = ${adjusted_cor_date_month} THEN "Mos 0"
+            WHEN DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) = ${adjusted_cor_date_month} THEN "Mos 1"
+            WHEN DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) = ${adjusted_cor_date_month} THEN "Mos 1"
+          ELSE ">12 Mos"
+          END
+      ;;
+    }
 
-  measure: original_cohort_date_measure{
-    type: min
-    sql: ${adjusted_cor_date_date} ;;
-  }
+    dimension_group: adjusted_cor_date {
+      label: "Adjusted CoR Date"
+      type: time
+      convert_tz: no
+      timeframes: [
+        raw,
+        date,
+        week,
+        month,
+        quarter,
+        year,
+        time,
+        time_of_day,
+        hour
+      ]
+      datatype: datetime
+      sql: CASE WHEN ${CoR_Date__c_date} != NULL THEN ${CoR_Date__c_date} ELSE ${created_date_date} END ;;
+    }
+
+    measure: original_cohort_date_measure{
+      type: min
+      sql: ${adjusted_cor_date_date} ;;
+    }
 
     dimension: id {
       type: string
