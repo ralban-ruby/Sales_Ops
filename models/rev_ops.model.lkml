@@ -11,7 +11,7 @@ explore: opportunity { ##Salesforce opportunity
     sql_on: ${opportunity.account_id} = ${account.id} ;;
   }
   join: lead { ##Salesforce lead
-    relationship: many_to_one
+    relationship: one_to_many
     type: left_outer
     sql_on: ${account.id} = ${lead.converted_account_id} ;;
     }
