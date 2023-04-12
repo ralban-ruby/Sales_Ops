@@ -3,7 +3,7 @@ view: lead_derived {
     sql:
       SELECT
         id,
-        MIN(DATE(CASE WHEN CO_R_DATE_C != NULL THEN CO_R_DATE_C ELSE CREATED_DATE)) AS original_cohort_date
+        MIN(DATE(CASE WHEN CO_R_DATE_C != NULL THEN CO_R_DATE_C ELSE CREATED_DATE END)) AS original_cohort_date
       FROM
         lead ;;
   }
