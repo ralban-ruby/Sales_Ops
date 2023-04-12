@@ -9,6 +9,24 @@ view: lead {
       drill_fields: [detail*]
     }
 
+  dimension_group: adjusted_cor_date {
+    label: "Adjusted CoR Date"
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      time,
+      time_of_day,
+      hour
+    ]
+    datatype: datetime
+    sql: IF ${CoR_Date__c_date} = NULL THEN ${created_date_date} ELSE ${CoR_Date__c_date} ;;
+  }
+
     dimension: id {
       type: string
       sql: ${TABLE}."ID" ;;
