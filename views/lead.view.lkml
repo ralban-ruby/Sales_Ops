@@ -14,10 +14,10 @@ view: lead {
       convert_tz: no
       type: number
       sql:CASE
-            WHEN DATE(${lead_derived.original_cohort_date_month}) = DATE(${adjusted_cor_date_month}) THEN 0
-            WHEN DATEADD(MONTH,1,DATE(${lead_derived.original_cohort_date_month})) = DATE(${adjusted_cor_date_month}) THEN 1
-            WHEN DATEADD(MONTH,2,DATE(${lead_derived.original_cohort_date_month})) = DATE(${adjusted_cor_date_month}) THEN 2
-            ELSE 13
+            WHEN CAST(${lead_derived.original_cohort_date_month} AS DATE) = CAST(${adjusted_cor_date_month} AS DATE) THEN 'Mos 0'
+            WHEN DATEADD(MONTH,1,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_cor_date_month} AS DATE) THEN 'Mos 1'
+            WHEN DATEADD(MONTH,2,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_cor_date_month} AS DATE) THEN 'Mos 2'
+            ELSE '>12 Mos'
           END
       ;;
     }
