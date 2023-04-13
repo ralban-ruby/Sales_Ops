@@ -38,20 +38,20 @@ view: opportunity {
 
   dimension: months_aging_cor {
     label: "Aging CoR Months"
-    type: string
+    type: number
     case: {
       when: {
         sql: ${lead_derived.original_cohort_date_month} = ${adjusted_close_date_month} ;;
         label: "Mos 0"
       }
-      # when: {
-      #   sql: DATEADD(MONTH,1,${lead_derived.original_cohort_date_month} = ${adjusted_close_date_month} ;;
-      #   label: "Mos 1"
-      # }
-      # when: {
-      #   sql: DATEADD(MONTH,2,${lead_derived.original_cohort_date_month} = ${adjusted_close_date_month} ;;
-      #   label: "Mos 2"
-      # }
+      when: {
+        sql: DATEADD(MONTH,1,${lead_derived.original_cohort_date_month} = ${adjusted_close_date_month} ;;
+        label: "Mos 1"
+      }
+      when: {
+        sql: DATEADD(MONTH,2,${lead_derived.original_cohort_date_month} = ${adjusted_close_date_month} ;;
+        label: "Mos 2"
+      }
       else: ">12 Mos"
     }
   }
