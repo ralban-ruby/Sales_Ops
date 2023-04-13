@@ -24,13 +24,13 @@ view: opportunity {
       convert_tz: no
       type: string
       sql:CASE
-              WHEN TO_CHAR(DATE_TRUNC(${lead_derived.original_cohort_date_date}), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 0'
-              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,1,${lead_derived.original_cohort_date_date})), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 1'
-              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,2,${lead_derived.original_cohort_date_date})), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 2'
-              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,3,${lead_derived.original_cohort_date_date})), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 3'
-              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,4,${lead_derived.original_cohort_date_date})), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 4'
-              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,5,${lead_derived.original_cohort_date_date})), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 5'
-              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,6,${lead_derived.original_cohort_date_date})), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 6'
+              WHEN TO_CHAR(DATE_TRUNC('month',${lead_derived.original_cohort_date_date}),'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 0'
+              WHEN TO_CHAR(DATE_TRUNC('month',DATEADD(MONTH,1,${lead_derived.original_cohort_date_date})),'YYYY-MM') = TO_CHAR(DATE_TRUNC('month',${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 1'
+              WHEN TO_CHAR(DATE_TRUNC('month',DATEADD(MONTH,2,${lead_derived.original_cohort_date_date})),'YYYY-MM') = TO_CHAR(DATE_TRUNC('month',${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 2'
+              WHEN TO_CHAR(DATE_TRUNC('month',DATEADD(MONTH,3,${lead_derived.original_cohort_date_date})),'YYYY-MM') = TO_CHAR(DATE_TRUNC('month',${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 3'
+              WHEN TO_CHAR(DATE_TRUNC('month',DATEADD(MONTH,4,${lead_derived.original_cohort_date_date})),'YYYY-MM') = TO_CHAR(DATE_TRUNC('month',${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 4'
+              WHEN TO_CHAR(DATE_TRUNC('month',DATEADD(MONTH,5,${lead_derived.original_cohort_date_date})),'YYYY-MM') = TO_CHAR(DATE_TRUNC('month',${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 5'
+              WHEN TO_CHAR(DATE_TRUNC('month',DATEADD(MONTH,5,${lead_derived.original_cohort_date_date})),'YYYY-MM') = TO_CHAR(DATE_TRUNC('month',${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 6'
               ELSE '>12 Mos'
             END
         ;;
