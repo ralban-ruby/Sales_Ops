@@ -24,6 +24,12 @@ view: lead_derived{
     sql: ${TABLE}."Account ID" ;;
   }
 
+  dimension: adjusted_original_cohort_month {
+    label: "Adjusted Original Cohort Month"
+    type: date_month
+    sql: ${original_cohort_date_date} ;;
+  }
+
   dimension_group: original_cohort_date {
     type: time
     label: "Original Cohort Date"

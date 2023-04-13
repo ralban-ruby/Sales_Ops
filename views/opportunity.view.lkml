@@ -24,9 +24,13 @@ view: opportunity {
       convert_tz: no
       type: string
       sql:CASE
-              WHEN CAST(${lead_derived.original_cohort_date_month} AS DATE) = CAST(${adjusted_close_date_month} AS DATE) THEN 'Mos 0'
-              WHEN DATEADD(MONTH,1,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_close_date_month} AS DATE) THEN 'Mos 1'
-              WHEN DATEADD(MONTH,2,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_close_date_month} AS DATE) THEN 'Mos 2'
+              WHEN ${lead_derived.adjusted_original_cohort_month} = ${adjusted_close_month} THEN 'Mos 0'
+              WHEN DATEADD(MONTH,1,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 1'
+              WHEN DATEADD(MONTH,2,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 2'
+              WHEN DATEADD(MONTH,3,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 3'
+              WHEN DATEADD(MONTH,4,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 4'
+              WHEN DATEADD(MONTH,5,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 5'
+              WHEN DATEADD(MONTH,6,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 6'
               ELSE '>12 Mos'
             END
         ;;
