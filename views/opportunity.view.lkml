@@ -37,19 +37,19 @@ view: opportunity {
     # }
 
   dimension: months_aging_cor {
-    label: "Same Day Close"
+    label: "Aging CoR Months"
     type: number
     case: {
       when: {
-        sql: CAST(${lead_derived.original_cohort_date_month} AS "DATE") = CAST(${adjusted_close_date_month} AS "DATE") ;;
+        sql: CAST(${lead_derived.original_cohort_date_month} AS DATE) = CAST(${adjusted_close_date_month} AS DATE) ;;
         label: "Mos 0"
       }
       when: {
-        sql: CAST(DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) AS "DATE") = CAST(${adjusted_close_date_month} AS "DATE") ;;
+        sql: CAST(DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) AS DATE) = CAST(${adjusted_close_date_month} AS DATE) ;;
         label: "Mos 1"
       }
       when: {
-        sql: CAST(DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) AS "DATE") = CAST(${adjusted_close_date_month} AS "DATE") ;;
+        sql: CAST(DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) AS DATE) = CAST(${adjusted_close_date_month} AS DATE) ;;
         label: "Mos 2"
       }
       else: ">12 Mos"
