@@ -13,11 +13,11 @@ view: lead {
       label: "Original Lead Cohort"
       convert_tz: no
       type: string
-      sql: CASE
+      sql:CASE
             WHEN ${lead_derived.original_cohort_date_month} = ${adjusted_cor_date_month} THEN "Mos 0"
             WHEN DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) = ${adjusted_cor_date_month} THEN "Mos 1"
-            WHEN DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) = ${adjusted_cor_date_month} THEN "Mos 1"
-          ELSE ">12 Mos"
+            WHEN DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) = ${adjusted_cor_date_month} THEN "Mos 2"
+            ELSE ">12 Mos"
           END
       ;;
     }
