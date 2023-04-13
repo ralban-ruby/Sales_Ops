@@ -12,12 +12,12 @@ view: lead {
     dimension: months_aging_cor {
       label: "Months Aging - CoR"
       convert_tz: no
-      # type: string
+      type: number
       sql:CASE
-            WHEN DATE(${lead_derived.original_cohort_date_month}) = DATE(${adjusted_cor_date_month}) THEN 'Mos 0'
-            WHEN DATEADD(MONTH,1,DATE(${lead_derived.original_cohort_date_month})) = DATE(${adjusted_cor_date_month}) THEN 'Mos 1'
-            WHEN DATEADD(MONTH,2,DATE(${lead_derived.original_cohort_date_month})) = DATE(${adjusted_cor_date_month}) THEN 'Mos 2'
-            ELSE '>12 Mos'
+            WHEN DATE(${lead_derived.original_cohort_date_month}) = DATE(${adjusted_cor_date_month}) THEN 0
+            WHEN DATEADD(MONTH,1,DATE(${lead_derived.original_cohort_date_month})) = DATE(${adjusted_cor_date_month}) THEN 1
+            WHEN DATEADD(MONTH,2,DATE(${lead_derived.original_cohort_date_month})) = DATE(${adjusted_cor_date_month}) THEN 2
+            ELSE 13
           END
       ;;
     }
