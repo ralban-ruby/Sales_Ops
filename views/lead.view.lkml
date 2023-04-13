@@ -9,19 +9,6 @@ view: lead {
       drill_fields: [detail*]
     }
 
-    dimension: months_aging_cor {
-      label: "Months Aging - CoR"
-      convert_tz: no
-      type: string
-      sql:CASE
-            WHEN CAST(${lead_derived.original_cohort_date_month} AS DATE) = CAST(${adjusted_cor_date_month} AS DATE) THEN 'Mos 0'
-            WHEN DATEADD(MONTH,1,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_cor_date_month} AS DATE) THEN 'Mos 1'
-            WHEN DATEADD(MONTH,2,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_cor_date_month} AS DATE) THEN 'Mos 2'
-            ELSE '>12 Mos'
-          END
-      ;;
-    }
-
     dimension_group: adjusted_cor_date {
       label: "Adjusted CoR Date"
       type: time

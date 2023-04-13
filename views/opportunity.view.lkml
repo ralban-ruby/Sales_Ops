@@ -19,24 +19,43 @@ view: opportunity {
       sql: ${TABLE}."IS_DELETED" ;;
     }
 
-  dimension_group: adjusted_close_date {
-    label: "Adjusted Close Date"
-    type: time
-    convert_tz: no
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      time,
-      time_of_day,
-      hour
-    ]
-    datatype: datetime
-    sql: CASE WHEN ${close_date_time_c_date} != NULL THEN ${close_date_time_c_date} ELSE ${close_date} END ;;
-  }
+    dimension: months_aging_cor {
+      label: "Months Aging - CoR"
+      convert_tz: no
+      type: string
+      sql:CASE
+              WHEN CAST(${lead_derived.original_cohort_date_month} AS DATE) = CAST(${adjusted_close_date_month} AS DATE) THEN 'Mos 0'
+              WHEN DATEADD(MONTH,1,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_close_date_month} AS DATE) THEN 'Mos 1'
+              WHEN DATEADD(MONTH,2,CAST(${lead_derived.original_cohort_date_month} AS DATE)) = CAST(${adjusted_close_date_month} AS DATE) THEN 'Mos 2'
+              ELSE '>12 Mos'
+            END
+        ;;
+    }
+
+    dimension: adjusted_close_month {
+      label: "Adjusted Close Month"
+      type: date_month
+      sql: ${adjusted_close_date_date} ;;
+    }
+
+    dimension_group: adjusted_close_date {
+      label: "Adjusted Close Date"
+      type: time
+      convert_tz: no
+      timeframes: [
+        raw,
+        date,
+        week,
+        month,
+        quarter,
+        year,
+        time,
+        time_of_day,
+        hour
+      ]
+      datatype: datetime
+      sql: CASE WHEN ${close_date_time_c_date} != NULL THEN ${close_date_time_c_date} ELSE ${close_date} END ;;
+    }
 
     dimension: same_day_close {
       label: "Same Day Close"
