@@ -24,23 +24,23 @@ view: opportunity {
       convert_tz: no
       type: string
       sql:CASE
-              WHEN ${lead_derived.adjusted_original_cohort_month} = ${adjusted_close_month} THEN 'Mos 0'
-              WHEN DATEADD(MONTH,1,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 1'
-              WHEN DATEADD(MONTH,2,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 2'
-              WHEN DATEADD(MONTH,3,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 3'
-              WHEN DATEADD(MONTH,4,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 4'
-              WHEN DATEADD(MONTH,5,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 5'
-              WHEN DATEADD(MONTH,6,${lead_derived.adjusted_original_cohort_month}) = ${adjusted_close_month} THEN 'Mos 6'
+              WHEN TO_CHAR(DATE_TRUNC(${lead_derived.original_cohort_date_date}), 'YYYY-MM') = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 0'
+              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,1,${lead_derived.original_cohort_date_date})) = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 1'
+              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,2,${lead_derived.original_cohort_date_date})) = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 2'
+              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,3,${lead_derived.original_cohort_date_date})) = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 3'
+              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,4,${lead_derived.original_cohort_date_date})) = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 4'
+              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,5,${lead_derived.original_cohort_date_date})) = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 5'
+              WHEN TO_CHAR(DATE_TRUNC(DATEADD(MONTH,6,${lead_derived.original_cohort_date_date})) = TO_CHAR(DATE_TRUNC(${adjusted_close_date_date}), 'YYYY-MM') THEN 'Mos 6'
               ELSE '>12 Mos'
             END
         ;;
     }
 
-    dimension: adjusted_close_month {
-      label: "Adjusted Close Month"
-      type: date_month
-      sql: ${adjusted_close_date_date} ;;
-    }
+    # dimension: adjusted_close_month {
+    #   label: "Adjusted Close Month"
+    #   type: date_month
+    #   sql: ${adjusted_close_date_date} ;;
+    # }
 
     dimension_group: adjusted_close_date {
       label: "Adjusted Close Date"
