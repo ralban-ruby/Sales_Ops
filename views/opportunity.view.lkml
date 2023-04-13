@@ -41,15 +41,15 @@ view: opportunity {
     type: number
     case: {
       when: {
-        sql: ${lead_derived.original_cohort_date_month} = ${adjusted_close_date_month} ;;
+        sql: CAST(${lead_derived.original_cohort_date_month} AS "DATE") = CAST(${adjusted_close_date_month} AS "DATE") ;;
         label: "Mos 0"
       }
       when: {
-        sql: DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} ;;
+        sql: CAST(DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) AS "DATE") = CAST(${adjusted_close_date_month} AS "DATE") ;;
         label: "Mos 1"
       }
       when: {
-        sql: DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} ;;
+        sql: CAST(DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) AS "DATE") = CAST(${adjusted_close_date_month} AS "DATE") ;;
         label: "Mos 2"
       }
       else: ">12 Mos"
