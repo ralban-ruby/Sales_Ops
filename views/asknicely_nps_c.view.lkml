@@ -117,7 +117,7 @@ view: asknicely_nps_c {
       quarter,
       year
     ]
-    sql: (${TABLE}."ASKNICELY_SURVEYSENT_C" ;;
+    sql: ${TABLE}."ASKNICELY_SURVEYSENT_C" ;;
   }
 
   dimension: asknicely_tag_c {
