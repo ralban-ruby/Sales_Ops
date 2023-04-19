@@ -66,6 +66,11 @@ explore: asknicely_nps_c { ##Salesforce Ask Nicely
     type: left_outer
     sql_on: ${asknicely_nps_c.onboarder_c} = ${user.name} ;;
   }
+  join: onboarding { ##Salesforce Onboarding
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${user.id} = ${onboarding.OwnerId} ;;
+  }
 }
 
 
