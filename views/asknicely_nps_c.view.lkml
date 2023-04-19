@@ -229,6 +229,5 @@ view: asknicely_nps_c {
 
   measure: count {
     type: count
-    drill_fields: [id, name]
   }
 }
