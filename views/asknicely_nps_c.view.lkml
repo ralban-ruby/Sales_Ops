@@ -229,5 +229,13 @@ view: asknicely_nps_c {
 
   measure: count {
     type: count
+    drill_fields: [detail*]
+  }
+
+  set: detail {
+    fields: [
+      id,
+      owner_id,
+    ]
   }
 }
