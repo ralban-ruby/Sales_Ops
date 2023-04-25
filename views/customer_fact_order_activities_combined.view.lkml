@@ -29,7 +29,7 @@ view: customer_fact_order_activities_combined {
 
   measure: max_date {
     label: "Max Date"
-    type: date
+    type: string
     convert_tz: no
     sql: max(${date_date})  ;;
   }
