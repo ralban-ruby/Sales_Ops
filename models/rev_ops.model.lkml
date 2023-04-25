@@ -48,7 +48,7 @@ explore: onboarding { ##Salesforce Onboarding
   }
 
 
-explore: customer_fact_order_activities_combined {}
+# explore: customer_fact_order_activities_combined {}
 
 explore: cancel_c { ##Salesforce Account
   label: "Cancels View"

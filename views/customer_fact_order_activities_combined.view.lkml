@@ -34,6 +34,18 @@ view: customer_fact_order_activities_combined {
     convert_tz: no
   }
 
+  dimension: week_1_included_units {
+    label: "Week 1 Included Units"
+    type: number
+    sql:
+      CASE
+        WHEN ${date_date} = ${onboarding.week_1_usage_date_date} THEN ${included_units}
+        WHEN MAX(${date_date}) < ${onboarding.week_1_usage_date_date} THEN ${included_units}
+        ELSE 0
+      END
+    ;;
+  }
+
   # measure: week_1_minutes_used {
   #   type: number
   #   sql: IF ${date_date}>=${contract_effective_date} AND ${date_date}<=${week_1_usage_date_date}, SUM(${Total_RS_Mins});;
