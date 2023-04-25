@@ -34,12 +34,13 @@ view: customer_fact_order_activities_combined {
     convert_tz: no
   }
 
-  dimension: week_1_included_units {
+  measure: week_1_included_units {
     label: "Week 1 Included Units"
     type: number
     sql:
       CASE
         WHEN ${date_date} = ${onboarding.week_1_usage_date_date} THEN ${included_units}
+        WHEN CAST(${max_date} AS DATE) < ${onboarding.week_1_usage_date_date} AND CAST(${max_date} AS DATE) = ${date_date} THEN ${included_units}
         ELSE 0
       END
     ;;
