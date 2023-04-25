@@ -47,26 +47,27 @@ view: onboarding {
         hour
       ]
       datatype: datetime
-      sql: DATEADD(DAY,8,${Active_Status__c_date}) ;;
+      convert_tz: no
+      sql: DATEADD(DAY,7,${Active_Status__c_date}) ;;
     }
 
-    dimension_group: create_date_adjusted {
-      label: "Adjusted Created Date"
-      type: time
-      timeframes: [
-        raw,
-        date,
-        week,
-        month,
-        quarter,
-        year,
-        time,
-        time_of_day,
-        hour
-      ]
-      datatype: datetime
-      sql: DATEADD(HOUR,-8,${created_date_time}) ;;
-    }
+    # dimension_group: create_date_adjusted {
+    #   label: "Adjusted Created Date"
+    #   type: time
+    #   timeframes: [
+    #     raw,
+    #     date,
+    #     week,
+    #     month,
+    #     quarter,
+    #     year,
+    #     time,
+    #     time_of_day,
+    #     hour
+    #   ]
+    #   datatype: datetime
+    #   sql: DATEADD(HOUR,-8,${created_date_time}) ;;
+    # }
 
     dimension: RecordTypeId {
       label: "Record Type"
