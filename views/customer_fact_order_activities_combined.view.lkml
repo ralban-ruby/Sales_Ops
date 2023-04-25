@@ -40,7 +40,6 @@ view: customer_fact_order_activities_combined {
     sql:
       CASE
         WHEN ${date_date} = ${onboarding.week_1_usage_date_date} THEN ${included_units}
-        WHEN MAX(${date_date}) < ${onboarding.week_1_usage_date_date} THEN ${included_units}
         ELSE 0
       END
     ;;
