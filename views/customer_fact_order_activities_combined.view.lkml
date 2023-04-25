@@ -66,6 +66,7 @@ view: customer_fact_order_activities_combined {
 
   dimension_group: date {
     type: time
+    convert_tz: no
     sql: ${TABLE}."Date" ;;
   }
 
