@@ -27,6 +27,13 @@ view: customer_fact_order_activities_combined {
     sql: last_day(DATEADD(MONTH,3,${contract_effective_date}));;
   }
 
+  measure: max_date {
+    label: "Max Date"
+    type: date
+    convert_tz: no
+    sql: max(${date_date})  ;;
+  }
+
   # measure: week_1_minutes_used {
   #   type: number
   #   sql: IF ${date_date}>=${contract_effective_date} AND ${date_date}<=${week_1_usage_date_date}, SUM(${Total_RS_Mins});;
