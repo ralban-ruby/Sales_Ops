@@ -29,6 +29,12 @@ view: account {
       sql: ${TABLE}."NAME" ;;
     }
 
+    dimension: conversion {
+      label: "Migration Status"
+      type: string
+      sql: ${TABLE}."CONVERSION_C" ;;
+    }
+
     dimension: type {
       type: string
       sql: ${TABLE}."TYPE" ;;
