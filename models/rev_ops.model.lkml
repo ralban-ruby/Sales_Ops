@@ -73,12 +73,17 @@ explore: asknicely_nps_c { ##Salesforce Ask Nicely
   }
 }
 
-explore: account { ##Salesforce Account
+explore: account { ##Salesforce Account Object
   label: "Account with FOA View"
   join: customer_fact_order_activities_combined { ##FOA day over day data
     relationship: one_to_many
     type: left_outer
     sql_on: ${account.id} = ${customer_fact_order_activities_combined.crm_id} ;;
+  }
+  join: case { ##Salesoforce Case Object
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${account.id} = ${case.account_id} ;;
   }
 }
 
