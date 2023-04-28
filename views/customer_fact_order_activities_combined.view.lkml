@@ -34,6 +34,13 @@ view: customer_fact_order_activities_combined {
     convert_tz: no
   }
 
+  dimension: yesterdays_date {
+    label: "Yesterday's Date"
+    convert_tz: no
+    type: date
+    sql: DATEADD(DAY,-1,CURRENT_DATE()) ;;
+  }
+
   # measure: week_1_included_units {
   #   label: "Week 1 Included Units"
   #   type: number
