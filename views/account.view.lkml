@@ -2551,6 +2551,7 @@ view: account {
         is_deleted,
         master_record_id,
         name,
+        conversion,
         type,
         record_type_id,
         parent_id,
