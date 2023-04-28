@@ -36,6 +36,12 @@ view: account {
       sql: ${TABLE}."CONVERSION_C" ;;
     }
 
+    dimension: todays_date {
+      label: "Today's Date"
+      type: date
+      sql: today() ;;
+    }
+
     dimension: type {
       type: string
       sql: ${TABLE}."TYPE" ;;
