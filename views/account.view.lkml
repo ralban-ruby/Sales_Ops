@@ -36,10 +36,10 @@ view: account {
       sql: ${TABLE}."CONVERSION_C" ;;
     }
 
-    dimension: todays_date {
-      label: "Today's Date"
+    dimension: yesterdays_date {
+      label: "Yesterday's Date"
       type: date
-      sql: today() ;;
+      sql: DATEADD(DAY,-1,CURRENT_DATE()) ;;
     }
 
     dimension: type {
