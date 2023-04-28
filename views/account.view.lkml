@@ -38,6 +38,7 @@ view: account {
 
     dimension: yesterdays_date {
       label: "Yesterday's Date"
+      convert_tz: no
       type: date
       sql: DATEADD(DAY,-1,CURRENT_DATE()) ;;
     }
