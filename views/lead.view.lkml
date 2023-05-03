@@ -1499,6 +1499,12 @@ view: lead {
       sql: ${TABLE}."CO_R_DATE_C" ;;
     }
 
+    measure: earliest_adjusted_cor_date{
+      label: "Earliest Adjusted CoR Date"
+      type: date
+      sql: min(${lead.adjusted_cor_date_date}) ;;
+    }
+
     dimension: Conversion_Asset__c {
       label: "Conversion Asset"
       type: string
