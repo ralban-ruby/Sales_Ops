@@ -19,22 +19,22 @@ view: opportunity {
       sql: ${TABLE}."IS_DELETED" ;;
     }
 
-    dimension: months_aging_cor {
-      label: "Months Aging - CoR"
-      convert_tz: no
-      type: number
-      sql:CASE
-              WHEN ${lead_derived.original_cohort_date_month} = ${adjusted_close_date_date} THEN 'Mos 0'
-              WHEN DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 1'
-              WHEN DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 2'
-              WHEN DATEADD(MONTH,3,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 3'
-              WHEN DATEADD(MONTH,4,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 4'
-              WHEN DATEADD(MONTH,5,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 5'
-              WHEN DATEADD(MONTH,5,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 6'
-              ELSE '>12 Mos'
-            END
-        ;;
-    }
+    # dimension: months_aging_cor {
+    #   label: "Months Aging - CoR"
+    #   convert_tz: no
+    #   type: number
+    #   sql:CASE
+    #           WHEN ${lead_derived.original_cohort_date_month} = ${adjusted_close_date_date} THEN 'Mos 0'
+    #           WHEN DATEADD(MONTH,1,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 1'
+    #           WHEN DATEADD(MONTH,2,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 2'
+    #           WHEN DATEADD(MONTH,3,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 3'
+    #           WHEN DATEADD(MONTH,4,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 4'
+    #           WHEN DATEADD(MONTH,5,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 5'
+    #           WHEN DATEADD(MONTH,5,${lead_derived.original_cohort_date_month}) = ${adjusted_close_date_month} THEN 'Mos 6'
+    #           ELSE '>12 Mos'
+    #         END
+    #     ;;
+    # }
 
   # dimension: months_aging_cor {
   #   label: "Aging CoR Months"

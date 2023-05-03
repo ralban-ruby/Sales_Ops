@@ -87,6 +87,20 @@ explore: account { ##Salesforce Account Object
   }
 }
 
+explore: lead { ##Salesforce Lead Object
+  label: "Lead with Account and Oppty"
+  join: account { ##Salesforce Account Object
+    relationship: many_to_one
+    type:  left_outer
+    sql_on: ${lead.converted_account_id} = ${account.id} ;;
+  }
+  join: opportunity { ##Salesforce Opportunity Object
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${account.id} = ${opportunity.account_id} ;;
+  }
+}
+
 
 
 
