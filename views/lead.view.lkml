@@ -195,6 +195,7 @@ view: lead {
 
     dimension: converted_date {
       type: date
+      convert_tz: no
       sql: ${TABLE}."CONVERTED_DATE" ;;
     }
 
