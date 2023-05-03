@@ -1502,7 +1502,7 @@ view: lead {
     measure: earliest_adjusted_cor_date{
       label: "Earliest Adjusted CoR Date"
       type: date
-      sql: min(${lead.adjusted_cor_date_date}) ;;
+      sql: CASE WHEN ${lead.id}=${lead.id} THEN min(${lead.adjusted_cor_date_date}) ELSE END ;;
     }
 
     dimension: Conversion_Asset__c {
