@@ -99,7 +99,14 @@ explore: lead { ##Salesforce Lead Object
     type: left_outer
     sql_on: ${account.id} = ${opportunity.account_id} ;;
   }
+  join: user { ##User Salesforce Object
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${opportunity.owner_id} = ${user.id};;
+  }
 }
+
+
 
 
 

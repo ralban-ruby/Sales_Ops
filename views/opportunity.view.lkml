@@ -82,47 +82,47 @@ view: opportunity {
       sql: CASE WHEN ${close_date_time_c_date} != NULL THEN ${close_date_time_c_date} ELSE ${close_date} END ;;
     }
 
-    dimension: same_day_close {
-      label: "Same Day Close"
-      type: number
-      case: {
-        when: {
-          sql: ${lead_create_date_date}=${close_date_time_c_date} AND ${stage_name} = 'Closed Won' ;;
-          label: "1"
-        }
-        else: "0"
-      }
-    }
+  #   dimension: same_day_close {
+  #     label: "Same Day Close"
+  #     type: number
+  #     case: {
+  #       when: {
+  #         sql: ${lead_create_date_date}=${close_date_time_c_date} AND ${stage_name} = 'Closed Won' ;;
+  #         label: "1"
+  #       }
+  #       else: "0"
+  #     }
+  #   }
 
-  dimension: in_month_closed_won {
-    label: "In-Month Closed Won"
-    type: number
-    case: {
-      when: {
-        sql: ${lead_create_date_month} = ${close_date_time_c_month} AND ${stage_name} = 'Closed Won' ;;
-        label: "1"
-      }
-      else: "0"
-    }
-  }
+  # dimension: in_month_closed_won {
+  #   label: "In-Month Closed Won"
+  #   type: number
+  #   case: {
+  #     when: {
+  #       sql: ${lead_create_date_month} = ${close_date_time_c_month} AND ${stage_name} = 'Closed Won' ;;
+  #       label: "1"
+  #     }
+  #     else: "0"
+  #   }
+  # }
 
-    dimension_group: lead_create_date {
-      label: "Lead Create Date"
-      type: time
-      timeframes: [
-        raw,
-        date,
-        week,
-        month,
-        quarter,
-        year,
-        time,
-        time_of_day,
-        hour
-      ]
-      datatype: datetime
-      sql: DATEADD(DAY,1,${lead.created_date_date}) ;;
-    }
+    # dimension_group: lead_create_date {
+    #   label: "Lead Create Date"
+    #   type: time
+    #   timeframes: [
+    #     raw,
+    #     date,
+    #     week,
+    #     month,
+    #     quarter,
+    #     year,
+    #     time,
+    #     time_of_day,
+    #     hour
+    #   ]
+    #   datatype: datetime
+    #   sql: DATEADD(DAY,1,${lead.created_date_date}) ;;
+    # }
 
     dimension: account_id {
       type: string
