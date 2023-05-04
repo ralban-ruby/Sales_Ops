@@ -11,6 +11,7 @@ view: opportunity {
 
     dimension: id {
       type: string
+      primary_key: yes
       sql: ${TABLE}."ID" ;;
     }
 
