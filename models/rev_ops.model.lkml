@@ -74,7 +74,7 @@ explore: asknicely_nps_c { ##Salesforce Ask Nicely
 }
 
 explore: account { ##Salesforce Account Object
-  label: "Account with FOA View"
+  label: "Account with FOA View & Zuora"
   join: customer_fact_order_activities_combined { ##FOA day over day data
     relationship: one_to_many
     type: left_outer
@@ -84,6 +84,16 @@ explore: account { ##Salesforce Account Object
     relationship: one_to_many
     type: left_outer
     sql_on: ${account.id} = ${case.account_id} ;;
+  }
+  join: zuora_account { ##Zuora Billing Account Object
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${account.id} = ${zuora_account.crm_id};;
+  }
+  join: zuora_subscription { ##Zuora Subscription Object
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${zuora_account.id} = ${zuora_subscription.account_id} ;;
   }
 }
 
