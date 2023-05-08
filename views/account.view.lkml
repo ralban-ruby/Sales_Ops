@@ -36,6 +36,12 @@ view: account {
       sql: ${TABLE}."CONVERSION_C" ;;
     }
 
+  dimension: conversion_group {
+    label: "Migration Cohort"
+    type: string
+    sql: ${TABLE}."CONVERSION_GROUP_C" ;;
+  }
+
     dimension: type {
       type: string
       sql: ${TABLE}."TYPE" ;;
