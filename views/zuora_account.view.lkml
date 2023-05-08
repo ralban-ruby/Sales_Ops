@@ -23,4 +23,10 @@ view: zuora_account {
     sql: ${TABLE}."STATUS" ;;
   }
 
+  dimension: mrr {
+    label: "MRR"
+    type: number
+    sql: ${TABLE}."MRR" ;;
+  }
+
 }
