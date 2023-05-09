@@ -95,6 +95,11 @@ explore: account { ##Salesforce Account Object
     type: left_outer
     sql_on: ${zuora_account.id} = ${zuora_subscription.account_id} ;;
   }
+  join: asknicely_nps_c { ##Salesforce AskNicely NPS Object
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${account.id} = ${asknicely_nps_c.asknicely_account_c} ;;
+  }
 }
 
 explore: lead { ##Salesforce Lead Object
