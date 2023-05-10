@@ -36,11 +36,26 @@ view: account {
       sql: ${TABLE}."CONVERSION_C" ;;
     }
 
-  dimension: conversion_group {
-    label: "Migration Cohort"
-    type: string
-    sql: ${TABLE}."CONVERSION_GROUP_C" ;;
-  }
+    dimension: conversion_group {
+      label: "Migration Cohort"
+      type: string
+      sql: ${TABLE}."CONVERSION_GROUP_C" ;;
+    }
+
+#Can I put Migration Status on Zuora Account and then pull down to Subscription for churn??? Not sure if this would cause issues in the data.
+
+    # dimension: migration_churn {
+    #   label: "Migration Churn"
+    #   type: number
+    #   sql:
+    #     CASE
+    #       WHEN ${conversion_group} = "Group 1" AND ${zuora_subscription.subscription_end} >= "2023-05-08" AND ${zuora_subscription.subscription_end} <= NOW()
+    #         THEN 1
+    #       WHEN ${conversion_group} = "Group 2" AND ${zuora_subscription.subscription_end} >= "2023-05-10" AND ${zuora_subscription.subscription_end} <= NOW()
+    #         THEN 1
+    #       ELSE 0
+    #     END;;
+    # }
 
     dimension: type {
       type: string
@@ -478,16 +493,19 @@ view: account {
     }
 
     dimension: discount_type_c {
+      label: "Discount Type"
       type: string
       sql: ${TABLE}."DISCOUNT_TYPE_C" ;;
     }
 
     dimension: discount_percentage_c {
+      label: "Discount Percentage"
       type: number
       sql: ${TABLE}."DISCOUNT_PERCENTAGE_C" ;;
     }
 
     dimension: discount_amount_c {
+      label: "Discount Amount"
       type: number
       sql: ${TABLE}."DISCOUNT_AMOUNT_C" ;;
     }
@@ -508,6 +526,7 @@ view: account {
     }
 
     dimension: partner_type_c {
+      label: "Partner Type"
       type: string
       sql: ${TABLE}."PARTNER_TYPE_C" ;;
     }
@@ -1438,6 +1457,7 @@ view: account {
     }
 
     dimension: partner_payout_c {
+      label: "Partner Payout"
       type: string
       sql: ${TABLE}."PARTNER_PAYOUT_C" ;;
     }
@@ -1448,6 +1468,7 @@ view: account {
     }
 
     dimension: compensation_structure_c {
+      label: "Compensation Structure"
       type: string
       sql: ${TABLE}."COMPENSATION_STRUCTURE_C" ;;
     }
@@ -1458,6 +1479,7 @@ view: account {
     }
 
     dimension: tier_c {
+      label: "Partner Tier"
       type: string
       sql: ${TABLE}."TIER_C" ;;
     }
@@ -2108,6 +2130,7 @@ view: account {
     }
 
     dimension: partner_status_c {
+      label: "Partner Status"
       type: string
       sql: ${TABLE}."PARTNER_STATUS_C" ;;
     }
@@ -2153,11 +2176,13 @@ view: account {
     }
 
     dimension: payout_information_c {
+      label: "Payout Information"
       type: string
       sql: ${TABLE}."PAYOUT_INFORMATION_C" ;;
     }
 
     dimension: partner_account_c {
+      label: "Partner Account"
       type: string
       sql: ${TABLE}."PARTNER_ACCOUNT_C" ;;
     }
@@ -2258,6 +2283,7 @@ view: account {
     }
 
     dimension: partner_discount_c {
+      label: "Partner Discount"
       type: number
       sql: ${TABLE}."PARTNER_DISCOUNT_C" ;;
     }
