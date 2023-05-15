@@ -44,7 +44,11 @@ explore: onboarding { ##Salesforce Onboarding
     type: left_outer
     sql_on: ${onboarding.Account__c} = ${customer_fact_order_activities_combined.crm_id};;
   }
-
+  join: account {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${onboarding.Account__c} = ${account.id} ;;
+  }
   }
 
 

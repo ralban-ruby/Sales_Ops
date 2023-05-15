@@ -42,21 +42,6 @@ view: account {
       sql: ${TABLE}."CONVERSION_GROUP_C" ;;
     }
 
-#Can I put Migration Status on Zuora Account and then pull down to Subscription for churn??? Not sure if this would cause issues in the data.
-
-    # dimension: migration_churn {
-    #   label: "Migration Churn"
-    #   type: number
-    #   sql:
-    #     CASE
-    #       WHEN ${conversion_group} = "Group 1" AND ${zuora_subscription.subscription_end} >= "2023-05-08" AND ${zuora_subscription.subscription_end} <= NOW()
-    #         THEN 1
-    #       WHEN ${conversion_group} = "Group 2" AND ${zuora_subscription.subscription_end} >= "2023-05-10" AND ${zuora_subscription.subscription_end} <= NOW()
-    #         THEN 1
-    #       ELSE 0
-    #     END;;
-    # }
-
     dimension: type {
       type: string
       sql: ${TABLE}."TYPE" ;;

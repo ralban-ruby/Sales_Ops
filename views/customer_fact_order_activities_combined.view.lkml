@@ -34,6 +34,17 @@ view: customer_fact_order_activities_combined {
     convert_tz: no
   }
 
+  dimension: plan_at_migration {
+    label: "Plan at Migration"
+    type: number
+    sql:
+        CASE
+          WHEN ${date_date} = "2023-05-08" AND ${account.conversion_group} = "Group 1" THEN ${included_units}
+          WHEN ${date_date} = "2023-05-10" AND ${account.conversion_group} = "Group 2" THEN ${included_units}
+          ELSE 0
+        END ;;
+  }
+
   dimension: yesterdays_date {
     label: "Yesterday's Date"
     convert_tz: no
