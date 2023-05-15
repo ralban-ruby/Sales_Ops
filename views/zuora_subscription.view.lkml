@@ -27,21 +27,6 @@ view: zuora_subscription {
     sql: CAST(${TABLE}."_FIVETRAN_SYNCED" AS TIMESTAMP_NTZ) ;;
   }
 
-  dimension: churn_mrr {
-    label: "Churn MRR"
-    type: number
-    sql:
-      CASE
-        WHEN ${subscription_end_date} = ${customer_fact_order_activities_combined.date_date} THEN ${customer_fact_order_activities_combined.mrr_total}
-      ELSE 0;;
-  }
-
-  measure: churn_mrr_sum {
-    label: "Churn MRR Sum"
-    type: sum
-    sql: ${churn_mrr}  ;;
-  }
-
   dimension: account_id {
     type: string
     # hidden: yes

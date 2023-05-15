@@ -104,11 +104,11 @@ explore: account { ##Salesforce Account Object
     type: left_outer
     sql_on: ${account.id} = ${asknicely_nps_c.asknicely_account_c} ;;
   }
-  # join: salesforce_zuora_subscription { ##Zuora Subscription Data from SFDC. Used because it has aggreagated data like MRR from multiple objects.
-  #   relationship: one_to_many
-  #   type: left_outer
-  #   sql_on: ${account.id} = ${salesforce_zuora_subscription.zuora_account_c} ;;
-  # }
+  join: salesforce_zuora_subscription { ##Zuora Subscription Data from SFDC. Used because it has aggreagated data like MRR from multiple objects.
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${account.id} = ${salesforce_zuora_subscription.zuora_account_c} ;;
+  }
 }
 
 explore: lead { ##Salesforce Lead Object
