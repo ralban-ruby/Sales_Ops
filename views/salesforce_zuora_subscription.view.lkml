@@ -292,6 +292,24 @@ view: salesforce_zuora_subscription {
     sql: ${TABLE}."_FIVETRAN_DELETED" ;;
   }
 
+  measure: mrr_total {
+    label: "MRR Total"
+    type: sum
+    sql: ${zuora_mrr_c} ;;
+  }
+
+  measure: mrr_average {
+    label: "MRR Average"
+    type: average
+    sql: ${zuora_mrr_c} ;;
+  }
+
+  measure: mrr_median {
+    label: "MRR Median"
+    type: median
+    sql: ${zuora_mrr_c} ;;
+  }
+
   set: detail {
     fields: [
       id,
