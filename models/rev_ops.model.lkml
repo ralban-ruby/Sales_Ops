@@ -131,7 +131,7 @@ explore: sfdc_account {
   join: salesforce_zuora_subscription {
     relationship: one_to_many
     type: left_outer
-    sql_on: ${sfdc_account.id} = ${salesforce_zuora_subscription.zuora_customer_account_c} ;;
+    sql_on: ${sfdc_account.id} = ${salesforce_zuora_subscription.zuora_account_c} ;;
   }
 }
 

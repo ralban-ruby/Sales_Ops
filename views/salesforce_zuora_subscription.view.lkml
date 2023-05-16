@@ -1,6 +1,6 @@
 view: salesforce_zuora_subscription {
   derived_table: {
-    sql: SELECT * FROM "SALESFORCE".ZUORA_SUBSCRIPTION_C LIMIT 10
+    sql: SELECT * FROM FIVETRAN_DB.SALESFORCE.ZUORA_SUBSCRIPTION_C WHERE IS_DELETED <> 1
       ;;
   }
 
