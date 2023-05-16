@@ -124,6 +124,7 @@ view: salesforce_zuora_subscription {
   dimension: zuora_mrr_c {
     label: "MRR"
     type: number
+    value_format_name: usd
     sql: ${TABLE}."ZUORA_MRR_C" ;;
   }
 
@@ -295,18 +296,21 @@ view: salesforce_zuora_subscription {
   measure: mrr_total {
     label: "MRR Total"
     type: sum
+    value_format_name: usd
     sql: ${zuora_mrr_c} ;;
   }
 
   measure: mrr_average {
     label: "MRR Average"
     type: average
+    value_format_name: usd
     sql: ${zuora_mrr_c} ;;
   }
 
   measure: mrr_median {
     label: "MRR Median"
     type: median
+    value_format_name: usd
     sql: ${zuora_mrr_c} ;;
   }
 
