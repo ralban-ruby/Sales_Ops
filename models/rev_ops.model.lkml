@@ -104,6 +104,11 @@ explore: account { ##Salesforce Account Object
     type: left_outer
     sql_on: ${account.id} = ${asknicely_nps_c.asknicely_account_c} ;;
   }
+  join: user {
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${account.owner_id} = ${user.id} ;;
+  }
 }
 
 explore: lead { ##Salesforce Lead Object
