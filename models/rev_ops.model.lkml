@@ -148,6 +148,11 @@ explore: sfdc_account {
     type: left_outer
     sql_on: ${sfdc_account.id} = ${contact.account_id} ;;
   }
+  join: salesforce_zuora_billing_account {
+    relationship: one_to_many
+    type: left_outer
+    sql_on: ${sfdc_account.id} = ${salesforce_zuora_billing_account.zuora_account_c} ;;
+  }
 }
 
 
