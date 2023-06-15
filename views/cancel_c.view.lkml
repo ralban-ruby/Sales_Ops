@@ -19,6 +19,12 @@ view: cancel_c {
       sql: ${TABLE}."OWNER_ID" ;;
     }
 
+    dimension: cancel_mrr {
+      label: "Cancel MRR"
+      type: number
+      sql: ${TABLE}."MRR_AT_TIME_OF_CANCEL_C"  ;;
+    }
+
     dimension: is_deleted {
       type: yesno
       sql: ${TABLE}."IS_DELETED" ;;
